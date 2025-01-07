@@ -6,7 +6,8 @@
     "dev": "electron .",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "start": "electron-forge start"
+    "start": "electron-forge start",
+    "publish": "electron-forge publish"
   },
   "keywords": [],
   "author": "KushiroT",
@@ -20,10 +21,16 @@
     "@electron-forge/maker-zip": "^7.6.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.6.0",
     "@electron-forge/plugin-fuses": "^7.6.0",
+    "@electron-forge/publisher-github": "^7.6.0",
     "@electron/fuses": "^1.8.0",
     "electron": "^33.2.1"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
-  }
+    "electron-squirrel-startup": "^1.0.1",
+    "update-electron-app": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saulobbarbosa/Tasker.git"
+} 
 }

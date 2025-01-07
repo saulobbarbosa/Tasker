@@ -100,27 +100,58 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     }
+    
+    concluir();
 
-
-    document.querySelectorAll('.concluir').forEach(element => {
-        element.addEventListener('click', () => {
-            const url = new URL(window.location.href);
-            const searchParams = url.searchParams;
-            const categoria = searchParams.get("categoria");
-            const target = element.getAttribute('data-value');
-            const dados = stringToObject(target);
-            const data = readData();
-            const coins = data.coins;
-            let totalMoedas = coins + dados.coins
-            let resultado = updateValue('coins', totalMoedas);
-            if (resultado) {
-                resultado = deleteCategoryOrTask(categoria, dados.task);
+    function concluir2() {
+        document.querySelectorAll('.concluir').forEach(element => {
+            element.addEventListener('click', () => {
+                const url = new URL(window.location.href);
+                const searchParams = url.searchParams;
+                const categoria = searchParams.get("categoria");
+                const target = element.getAttribute('data-value');
+                const dados = stringToObject(target);
+                const data = readData();
+                const coins = data.coins;
+                let totalMoedas = coins + dados.coins
+                let resultado = updateValue('coins', totalMoedas);
                 if (resultado) {
-                    window.location.reload();
+                    resultado = deleteCategoryOrTask(categoria, dados.task);
+                    if (resultado) {
+                        updatePageValues();
+                        exibirTarefasPorCategoria(categoria);
+                        concluir();
+                    }
                 }
-            }
+            });
         });
-    });
+    }
+
+
+    function concluir() {
+        document.querySelectorAll('.concluir').forEach(element => {
+            element.addEventListener('click', () => {
+                const url = new URL(window.location.href);
+                const searchParams = url.searchParams;
+                const categoria = searchParams.get("categoria");
+                const target = element.getAttribute('data-value');
+                const dados = stringToObject(target);
+                const data = readData();
+                const coins = data.coins;
+                let totalMoedas = coins + dados.coins
+                let resultado = updateValue('coins', totalMoedas);
+                if (resultado) {
+                    resultado = deleteCategoryOrTask(categoria, dados.task);
+                    if (resultado) {
+                        updatePageValues();
+                        exibirTarefasPorCategoria(categoria);
+                        concluir2();
+                    }
+                }
+            });
+        });
+    }
+
 });
 
 function pontoParaVirgula(texto) {

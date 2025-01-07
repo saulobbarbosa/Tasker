@@ -1,6 +1,8 @@
 const { app, BrowserWindow} = require('electron');
+const { updateElectronApp } = require('update-electron-app');
 
 if (require('electron-squirrel-startup')) app.quit();
+updateElectronApp();
 
 let mainWindow;
 
@@ -9,7 +11,7 @@ app.on('ready', () =>{
     mainWindow = new BrowserWindow({
         width: 1920,
         height: 1080,
-        autoHideMenuBar: true,
+        autoHideMenuBar: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
