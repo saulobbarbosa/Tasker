@@ -11,7 +11,7 @@ app.on('ready', () =>{
     mainWindow = new BrowserWindow({
         width: 1920,
         height: 1080,
-        autoHideMenuBar: false,
+        autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
