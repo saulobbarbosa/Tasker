@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasker</title>
+    <link rel="stylesheet" href="../assets/css/tarefas.css">
+    <script defer src="../assets/js/data.js"></script>
+    <script src="../assets/js/links.js" defer></script>
+    <script defer src="../assets/js/fontawesome.js"></script>
+    <script defer src="../assets/js/brands.js"></script>
+    <script defer src="../assets/js/solid.js"></script>
+</head>
+
+<body>
+    <div class="topo naoSelecionavel">
+        <div class="coin-div redire" value="converter.html">
+            <div id="coins"></div><img src="../assets/img/moeda.png" draggable="false">
+        </div>
+        <div class="criar-div naoSelecionavel redire" id="criar-tarefa" value="">
+            CRIAR TAREFA
+        </div>
+        <div class="dinheiro-div redire" value="retirar-dinheiro.html">
+        </div>
+    </div>
+    <div class="principal tarefas">
+        
+    </div>
+    <div class="home redire" value="index.html">
+        <i class="fa-solid fa-house"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const url = new URL(window.location.href);
+            const searchParams = url.searchParams;
+            const categoria = searchParams.get("categoria");
+
+            if (categoria) {
+                const criarDiv = document.querySelector('.criar-div.redire');
+                if (criarDiv) {
+                    criarDiv.setAttribute('value', `criar-tarefa.html?categoria=${encodeURIComponent(categoria)}`);
+                } else {
+                    console.error('Elemento criar-div não encontrado.');
+                }
+            } else {
+                console.error('Parâmetro categoria não encontrado na URL.');
+            }
+        });
+    </script>
+</body>
+
+</html>
